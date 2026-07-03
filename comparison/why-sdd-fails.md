@@ -6,6 +6,8 @@ Google's May 2026 whitepaper *"Spec-Driven Production Grade Development in the A
 
 This document dissects where it fails and why.
 
+This is the polemical version of the argument. It is intentionally sharper than the rest of the knowledge base.
+
 ---
 
 ## 1. "Code Is Disposable" — A Contradiction
@@ -28,8 +30,9 @@ As Qwen 3.6 35B put it in one session:
 
 > "Why would you sandbox, test, and review something you are going to flush down the toilet? What about the human in that loop? Would you want to be that human?"
 
-Spex's answer: eliminate code entirely. No code to review, no sandbox to escape, no tests to generate. The spec is evaluated deterministically by the solver — not probabilistically by an LLM.
+That is the contradiction in one sentence: SDD calls code disposable, then asks humans to treat it like hazardous waste.
 
+Spex's answer: stop making generated application code the reviewed business artifact. The signed spec is the artifact. The portable, distributable business engine is compiled from it. Infrastructure binds to it. The code-generation furnace is no longer the center of the system.
 
 ---
 
@@ -72,7 +75,7 @@ The paper recommends:
 
 This is like optimizing the fuel efficiency of a car with no brakes. The format tax is not the problem — the probabilistic model is.
 
-Spex's answer: zero tokens burned on code generation. The spec is evaluated by a deterministic solver, not a probabilistic LLM. No token budget, no format tax, no parsing accuracy trade-offs.
+Spex's answer: stop burning tokens to manufacture core business logic you already intend to distrust. LLM effort belongs in the authoring loop, where it helps clarify and refine the spec. The accepted specification should be checked by a deterministic solver, not interpreted probabilistically by an LLM.
 
 ---
 
@@ -140,7 +143,7 @@ The paper admits:
 
 This is the **Illusion of Speed**. AI writes code 100x faster than humans, but if 80% of it is hallucinated, the review burden is 100x worse. The bottleneck shifts from writing to reviewing — and reviewing is harder than writing because you have to understand code you didn't write, in a system you didn't design.
 
-Spex's answer: no code to review. The spec is written by humans, verified by the solver, and evaluated by the runtime. The only review is reading the spec — which is written in controlled English, not probabilistic code.
+Spex's answer: generated application code is not the reviewed business artifact. The spec is written by humans, verified by the solver, and lowered into portable, distributable business-engine parts. The primary review is reading the signed business contract, not spelunking through probabilistic code someone already plans to throw away.
 
 ---
 
@@ -160,13 +163,15 @@ Every iteration burns tokens. Every regeneration burns tokens. Every test suite 
 
 The paper optimizes this loop (leaner specs, better formatting, MCP tools) but never questions the loop itself.
 
-Spex's answer: one evaluation, zero regeneration.
+Spex's answer: end the regeneration loop.
 
 ```
-Spec (Controlled English) → Solver verifies → Human signs → Runtime evaluates
+Spec (Controlled English) → Solver verifies → Human signs
+    → Compiler produces portable execution parts
+    → Boundary ports bind to infrastructure
 ```
 
-No loop. No regeneration. No token burn.
+No code-regeneration loop. No token furnace for core business logic. No human condemned to review tomorrow's trash.
 
 ---
 
@@ -191,14 +196,14 @@ Spex does not optimize the spec-driven code generation loop. Spex eliminates it.
 
 | Spec-Driven Development | Spex |
 |------------------------|------|
-| Spec → LLM → Code → Tests → Review → Deploy | Spec → Solver → Sign → Runtime |
+| Spec → LLM → Code → Tests → Review → Deploy | Spec → Solver → Sign → Portable, distributable business engine |
 | Probabilistic, hallucinates | Deterministic, Church-Rosser |
 | Markdown/YAML, unverified | Controlled English, mathematically verified |
-| Code is "disposable" (but needs 6 safety layers) | No code exists |
-| Token budget, format tax, parsing accuracy | Zero tokens, zero format tax |
+| Code is "disposable" (but needs 6 safety layers) | Generated application code is not the reviewed business artifact |
+| Token budget, format tax, parsing accuracy | No token furnace for regenerating core business logic |
 | Fragmented across 4 locations | Single document |
-| Human reviews AI-generated code | Human reads and signs the spec |
-| Closed loop of regeneration | One evaluation, done |
+| Human reviews AI-generated code | Human reads and signs the business contract |
+| Closed loop of regeneration | Solver-guided spec, compiled business engine |
 
 The Google whitepaper proves that the industry has reached the limit of spec-driven code generation. The authors know it is broken — they just haven't gone far enough to eliminate the code.
 

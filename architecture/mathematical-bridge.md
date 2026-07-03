@@ -2,7 +2,7 @@
 
 ## The Fusion Architecture
 
-Spex's core innovation is a 1:1 isomorphism between controlled English and typed lambda calculus:
+The core design ambition is a 1:1 isomorphism between controlled English and typed lambda calculus:
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -43,26 +43,26 @@ Spex's core innovation is a 1:1 isomorphism between controlled English and typed
 └─────────────────────────────────────────────────┘
 ```
 
-## Why Lambda Calculus?
+## Why lambda calculus?
 
-### Church-Rosser Theorem
+### Church-Rosser theorem
 
-The Church-Rosser theorem guarantees that regardless of the order of evaluation, a lambda expression always reduces to the same normal form. This means:
+The Church-Rosser theorem is relevant because it describes a form of confluence: when reduction reaches a normal form, the order of evaluation does not change the final result. In this research direction, that matters because Spex needs deterministic semantics at the business-logic level.
 
-> **The spec evaluates identically on any computer in the universe.**
+The intended consequence is not a magical implementation guarantee. It is a semantic target: the meaning of the specification should not depend on prompt phrasing, runtime mood, or platform-specific interpretation.
 
-No race conditions, no non-determinism, no platform-specific behavior.
+That does not eliminate all systems concerns by itself. Concurrency, I/O, distribution, and storage are still physical concerns. The point is narrower: the logical meaning of the accepted specification should be deterministic.
 
-### Pure Functions
+### Pure functions
 
-Lambda calculus is:
+Lambda calculus is attractive here because it is:
 - **Stateless** — no mutable state, no hidden side effects
 - **Referentially transparent** — same input always yields same output
 - **Composable** — complex rules are built from simple, verifiable pieces
 
-## The Solver
+## The solver
 
-The mathematical solver performs:
+In a stronger version of the design, the mathematical solver would perform:
 
 1. **Completeness checking** — are all state transitions covered?
 2. **Contradiction detection** — do any rules conflict?

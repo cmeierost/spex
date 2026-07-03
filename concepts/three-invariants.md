@@ -1,12 +1,12 @@
 # The Three Core Invariants
 
-These are the non-negotiable pillars of Spex. Every design decision, every grammar rule, and every architectural choice flows from these three invariants.
+These are the current design invariants behind Spex. They are not presented as properties of a finished system, but as the constraints the research direction is trying to preserve.
 
 ---
 
 ## Invariant I: Absolute Separation of Logic and Physics
 
-**The logical world and the physical world never touch.**
+**The logical world and the physical world should remain strictly separated.**
 
 ### The Logical World (The Business)
 
@@ -15,25 +15,25 @@ The logical world consists exclusively of the economic, operational, and legal r
 - **Immortal** — business rules don't expire when technology changes
 - **Ageless** — a spec written today is equally valid in 10 years
 - **Infrastructure-agnostic** — no mention of servers, databases, containers, APIs, or any physical construct
-- **Human-readable** — written in controlled English that non-programmers understand
+- **Human-readable** — ideally written in a controlled form that non-programmers understand
 
 ### The Physical World (The Machine)
 
-The physical world is a purely temporary transit vehicle. Its properties:
+The physical world is the implementation layer that carries nonfunctional requirements. Its properties:
 
 - **Disposable** — servers, IPs, Docker containers, SQL databases are implementation details
 - **Invisible** — none of these concepts appear in the specification
-- **Managed by the runtime** — the universal interpreter handles all physical concerns
+- **Runtime-managed** — a runtime or infrastructure layer would handle the physical concerns
 
 ### Why This Matters
 
-Every time a spec mentions a database, an API endpoint, or a cloud service, it couples business logic to a technology that will become obsolete. Spex forbids this coupling at the grammar level.
+Every time a spec mentions a database, an API endpoint, or a cloud service, it couples business logic to an implementation of nonfunctional requirements. The Spex direction tries to forbid this coupling at the grammar level.
 
 ---
 
 ## Invariant II: The Contract is the Code
 
-**There is one artifact and one artifact only: the specification.**
+**The specification should be the authoritative business artifact.**
 
 ### What Gets Eliminated
 
@@ -48,13 +48,13 @@ Every time a spec mentions a database, an API endpoint, or a cloud service, it c
 
 ### The Implication
 
-If something goes wrong within the system, the specification was defined incorrectly. There is no "the spec was right but the code was wrong." There is no code.
+If something goes wrong within the system, the first question should be whether the specification was incomplete, contradictory, or unclear. The goal is not to pretend implementation defects cannot exist. The goal is to stop business correctness from being defined primarily in application code.
 
 ---
 
 ## Invariant III: Purely Declarative Intent Governance
 
-**The system computes what an actor can do; the UI merely reflects it.**
+**The system should compute what an actor can do; the UI should merely reflect it.**
 
 ### What This Is NOT
 
@@ -71,4 +71,4 @@ If something goes wrong within the system, the specification was defined incorre
 
 ### The Result
 
-Crashes and runtime exceptions disappear. The system pre-computes the path to a user's goal. If a step is restricted, the UI displays the contract text explaining exactly which preconditions must be met.
+In the target model, many reactive UI errors would be replaced by proactive guidance. If a step is restricted, the UI would display contract-derived explanations of which preconditions must be met.

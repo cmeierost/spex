@@ -1,6 +1,6 @@
 # Concepts Overview
 
-Spex addresses a fundamental problem: **software engineering has been built on a broken abstraction.**
+Spex explores a fundamental problem: **software engineering may be built on a broken abstraction.**
 
 ## The Problem
 
@@ -14,9 +14,9 @@ For decades, building software has required translating human intent through mul
 
 Each layer introduces drift, misinterpretation, and technical debt. The gap between what a human *intends* and what a machine *executes* is where bugs, security vulnerabilities, and project failures live.
 
-## The Spex Answer
+## The Spex direction
 
-Spex collapses all these layers into **one**: a mathematically precise specification written in controlled English that:
+The Spex hypothesis is that these layers should collapse toward **one** central artifact: a mathematically precise specification, potentially written in controlled English, that would:
 
 - **A human can read and sign** — no programming knowledge required
 - **A machine can evaluate directly** — no code generation step

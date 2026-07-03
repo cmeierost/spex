@@ -24,7 +24,7 @@ Kimi is a faster hammer on the same broken roof.
 
 ### Spex's Answer
 
-Eliminate programming entirely. The spec is deterministic (Church-Rosser), human-readable (controlled English), and legally signable. No code to generate, no tests to write, no deployment to manage, no audit to fail.
+Reduce generated application code as the central artifact. The long-term aim is a deterministic, human-readable, signable specification, with LLMs assisting authoring rather than deciding business logic.
 
 ---
 
@@ -56,6 +56,8 @@ MDA attempted to separate business logic from implementation using visual modeli
 
 Infrastructure-as-Code tools let developers declare cloud resources in code (HCL, TypeScript, Python).
 
+They are useful because infrastructure is real work. The problem is that they encode implementations of nonfunctional requirements in the same development flow as business behavior.
+
 ### Why It Fails
 
 | Problem | Impact |
@@ -66,7 +68,9 @@ Infrastructure-as-Code tools let developers declare cloud resources in code (HCL
 
 ### Spex's Answer
 
-The business logic does not know computers exist. Infrastructure is a runtime concern, not a spec concern.
+The business logic does not know computers exist. Infrastructure is a concern around the portable, distributable business engine, not a spec concern.
+
+More precisely: business logic carries functional requirements. Infrastructure code implements nonfunctional requirements such as latency, durability, security, compliance, and scaling. Spex tries to keep those concerns separate even when both must exist.
 
 ---
 

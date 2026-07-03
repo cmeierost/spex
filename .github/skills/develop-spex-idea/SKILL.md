@@ -13,12 +13,12 @@ Take a raw idea and expand it into a structured documentation proposal ready for
 
 Determine which folder the idea belongs to:
 
-| Question                           | Folder          |
-| ---------------------------------- | --------------- |
-| How does X work inside the system? | `architecture/` |
-| Why do we believe X?               | `concepts/`     |
-| How is X different from Y?         | `comparison/`   |
-| How do I write X in Spex?          | `grammar/`      |
+| Question                                 | Folder          |
+| ---------------------------------------- | --------------- |
+| How might X work in the proposed design? | `architecture/` |
+| Why do we believe X?                     | `concepts/`     |
+| How is X different from Y?               | `comparison/`   |
+| How might X be expressed in Spex?        | `grammar/`      |
 
 If none fit, propose a new folder (only if 3+ docs will go there).
 
@@ -71,6 +71,6 @@ End with: "Ready to write this as `.md` file, or refine the outline further?"
 ## Constraints
 
 - Follow AGENTS.md conventions (tone, formatting, terminology)
-- Every claim must be traceable to `manifest.md`
-- No hedging language
+- Every core claim should stay aligned with the current working thesis in `manifest.md`
+- Avoid false certainty; use target-model language when implementation is not settled
 - Suggest concrete Spex spec examples where relevant
