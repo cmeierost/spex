@@ -120,6 +120,8 @@ An LLM is a compiler in the structural sense: it translates a source you own (th
 
 People who claim an LLM is a compiler have never tried to design a programming language with an unfinished spec.
 
+Birgitta Böckeler makes the same distinction in [I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html): LLMs are inferential systems, not compilers, interpreters, transpilers, or assemblers of natural language. A compiler works from structured input to repeatable, predictable output. An LLM does not.
+
 Designing a programming language revealed the hard truth: when the spec is incomplete, changing it breaks the implementation. The LLM cannot reliably update only the affected parts. It produces uncontrolled transformations that require starting from scratch.
 
 That is not a compiler. That is an uncontrolled code transformer.

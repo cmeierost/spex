@@ -97,6 +97,13 @@ This document catalogs technologies, languages, and research that influenced, re
 - **Relevance:** A toolkit from GitHub that promotes Spec-Driven Development (SDD). It provides a CLI (`specify`), templates, and slash commands (`/specify`, `/plan`, `/tasks`) to help teams write specs before handing them to AI coding agents. Key concepts: a `constitution.md` for non-negotiable project principles, and a sequential workflow of spec → technical plan → task breakdown → AI implementation. Spec Kit acknowledges that "code is not the best medium for requirements negotiation" and that specs should be "living documents that evolve alongside your code."
 - **Spex's difference:** Spec Kit still uses AI agents to *generate code from specs*. The spec is a steering document for code generation — not the final business artifact. Spex explores whether core business behavior can move out of probabilistic code generation and into a compiler-checked specification. Spec Kit's specs are markdown templates for developers; Spex investigates controlled English for business stakeholders and lawyers.
 
+### Fowler / Böckeler on SDD tools
+
+- **Source:** [Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
+- **Relevance:** Birgitta Böckeler's survey is useful because it separates current SDD usage into three levels: spec-first, spec-anchored, and spec-as-source. It also compares Kiro, GitHub Spec Kit, and Tessl as concrete examples of how AI coding tools are currently treating specs as task documents, workflow anchors, or possible source artifacts.
+- **Spex's alignment:** Spex shares the strongest version of the ambition: the spec should become the artifact humans maintain and trust over time, not just a prompt or temporary planning document.
+- **Spex's difference:** The tools surveyed still rely on LLM-mediated code generation and markdown-heavy review workflows. Spex explores a stricter path: controlled English accepted by a solver/compiler, with compiled business-engine parts subordinate to the signed spec rather than probabilistic code as the trusted output.
+
 ### Accord Project (Cicero)
 
 - **Source:** [accordproject.org](https://accordproject.org)
@@ -118,6 +125,13 @@ This document catalogs technologies, languages, and research that influenced, re
 - **Source:** [uzh.ch](https://www.ace-editor.org)
 - **Relevance:** A direct conceptual ancestor for a possible Spex grammar. ACE is a strict subset of English designed to be unambiguous and directly translatable to first-order logic. Spex builds on the same controlled-language ambition.
 - **Spex's difference:** ACE targets knowledge representation and NLP research. Spex explores business specifications, solver-guided authoring, glossary-checked domain concepts, and portable execution targets.
+
+### Logical English
+
+- **Source:** [Logical English](https://logicalcontracts.com/logical-english/), [Logical English meets legal English for swaps and derivatives](https://link.springer.com/article/10.1007/s10506-021-09295-3), [Logical English handbook](https://github.com/LogicalContracts/LogicalEnglish/blob/main/le_handbook.pdf)
+- **Relevance:** Logical English is a controlled natural language inspired by logic programming. It can be understood as syntactic sugar for Prolog-like languages and has been applied to legal and regulatory texts, including finance, insurance, citizenship, tax, and ISDA swap/derivatives clauses.
+- **Spex's alignment:** Logical English is one of the closest language-level relatives to Spex. It shares the ambition that rule-like English can be both readable by humans and executable or compilable by machines.
+- **Spex's difference:** Logical English maps into logic programming systems such as Prolog, ASP, or s(CASP). Spex is exploring a broader business-contract surface: solver-guided authoring, signed specifications, state responsibility, outside authorities, value constraints, boundary ports, and portable/distributable business-engine parts.
 
 ---
 
@@ -242,6 +256,27 @@ This document catalogs technologies, languages, and research that influenced, re
 
 ## Legal and Policy Rules as Code
 
+### Rules as Code / Computable Law
+
+- **Source:** [OECD OPSI: New Techniques for Building and Using Legal Encodings in the Drafting Room](https://oecd-opsi.org/innovations/new-techniques-for-building-and-using-legal-encodings-in-the-drafting-room/), [Encoding legislation](https://link.springer.com/article/10.1007/s10506-023-09350-1)
+- **Relevance:** Rules as Code and computable law are very close to Spex's core question. They explore whether legislation, regulation, and policy can be written or maintained in machine-consumable form so that legal effects can be tested, validated, and made operational before or alongside implementation.
+- **Spex's alignment:** Spex shares the belief that rules should be checkable before they are operationalized. The important overlap is not merely automation; it is using formalization to expose ambiguity, contradiction, incompleteness, and implementation drift.
+- **Spex's difference:** Rules as Code usually starts from public policy or legislation and often produces code or formal encodings beside the legal text. Spex explores whether a controlled specification can become the signed business artifact itself, with LLMs helping authoring and the solver/compiler preserving deterministic meaning.
+
+### Catala
+
+- **Source:** [Catala](https://github.com/CatalaLang/catala), [Catala: A Programming Language for the Law](https://arxiv.org/abs/2103.03198), [Inria: CATALA translates law into code](https://www.inria.fr/en/catala-software-dgfip-cnaf)
+- **Relevance:** Catala is a domain-specific language for formalizing statutory law, especially socio-fiscal rules such as tax and benefits. It is explicitly compiler-oriented and aimed at making legal calculations more reliable by translating legal specifications into executable code.
+- **Spex's alignment:** Catala is one of the closest technical relatives to Spex: lawyers and computer scientists collaborate around a formal legal encoding, and the compiler becomes a tool for reliability rather than a mere code generator.
+- **Spex's difference:** Catala focuses on legal rules that are already algorithmic, especially calculations. Spex is broader and more speculative: signed business specifications, permissions, state responsibility, outside authorities, value constraints, boundary ports, and portable/distributable business-engine parts.
+
+### Blawx
+
+- **Source:** [Blawx Rules as Code Demonstration](https://law.mit.edu/pub/blawxrulesascodedemonstration), [Blawx paper](https://ceur-ws.org/Vol-3193/paper4GDE.pdf)
+- **Relevance:** Blawx is a user-friendly Rules as Code tool powered by goal-directed answer set programming. It emphasizes legal reasoning, explanations linked to source material, and usability for legal/policy users rather than only programmers.
+- **Spex's alignment:** Blawx is important because it treats legal rule authoring as an interface and explanation problem, not just a backend logic problem. That overlaps strongly with Spex's LLM-assisted authoring loop and solver feedback.
+- **Spex's difference:** Blawx encodes statutes into a reasoning system. Spex asks whether controlled specification text can become the reviewed business artifact and compile into portable, distributable business-engine parts.
+
 ### LegalRuleML
 
 - **Source:** [LegalRuleML Core Specification](https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html)
@@ -300,9 +335,9 @@ If there is no human in the loop, how can an LLM know what to program? It cannot
 
 ### MindStudio / Remy (Compiler Comparison)
 
-- **Source:** [MindStudio Blog](https://www.mindstudio.ai/blog/is-llm-a-compiler-analysis)
+- **Source:** [MindStudio Blog](https://www.mindstudio.ai/blog/is-llm-a-compiler-analysis); counterpoint: [I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html)
 - **Relevance:** MindStudio argues that an LLM is a compiler "in the structural sense": it translates a source you own (the spec) into a derived artifact (the app) that you don't hand-maintain. They concede LLMs are non-deterministic at the token level, but claim reproducibility is a workflow property — pin the spec, annotations, and schemas, and the output is "behaviorally equivalent." Key claim: "the spec is the program; the code is what gets compiled."
-- **Spex's fundamental disagreement:** MindStudio claims the LLM is a compiler structurally, because spec is source and code is derived. This is wrong for a deeper reason: you can never prove the derived code is 100% correct. Behavioral equivalence is not correctness. If the spec is the single source of truth, the only thing you need to correct is the spec — not some probabilistic artifact whose correctness you cannot verify.
+- **Spex's fundamental disagreement:** MindStudio claims the LLM is a compiler structurally, because spec is source and code is derived. Böckeler's counterpoint is closer to Spex's position: compilers are repeatable and predictable in a way LLM inference is not. Behavioral equivalence is not correctness. If the spec is the single source of truth, the only thing you need to correct is the spec — not some probabilistic artifact whose correctness you cannot verify.
 
 This was learned from practice, not theory. Designing a programming language with an unfinished spec revealed the hard truth: when the spec is incomplete, changing it breaks the implementation. The LLM cannot reliably update only the affected parts. It produces uncontrolled transformations that require starting from scratch. That is not a compiler — that is an uncontrolled code transformer.
 
@@ -332,8 +367,10 @@ And the second point is worse: we know how to build real compilers. The compiler
 | TLA+ | Formal specs | Temporal properties, safety proofs |
 | Fizzbee | Requirements → formal | Bridge between natural language and verification |
 | Spec Kit | Spec tooling | Specification-as-artifact movement |
+| Fowler / Böckeler SDD tools survey | AI spec tooling | Spec-first, spec-anchored, and spec-as-source distinctions |
 | Accord Project / Cicero | Legal agreements | Computable contracts, template conditions |
 | ACE | Controlled English | Direct grammatical ancestor |
+| Logical English | Controlled English / logic programming | Legal rules as executable readable English |
 | Unison | Functional language | Lambda-calculus runtime, content-addressed code |
 | Haskell | Functional language | Pure evaluation, referential transparency |
 | Eiffel / DbC | Contract programming | Contracts as correctness criteria |
@@ -346,6 +383,9 @@ And the second point is worse: we know how to build real compilers. The compiler
 | Business rules engines | Rules management | Business rules outside application code |
 | DDD | Domain modeling | Ubiquitous language, bounded contexts, domain events |
 | EventStorming | Domain discovery | Collaborative discovery of events, policies, boundaries |
+| Rules as Code / Computable Law | Legal/policy automation | Machine-consumable rules, validation, legal alignment |
+| Catala | Law-specific DSL | Compiler-oriented formalization of statutory calculations |
+| Blawx | Rules as Code tool | Legal reasoning with source-linked explanations |
 | LegalRuleML | Legal rules | Norms, authorities, sources, deontic logic |
 | Orleans | Distributed runtime | Virtual actor model, logical/physical separation |
 | WebAssembly Component Model | Portable execution | Distributable parts with declared interfaces |

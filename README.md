@@ -2,9 +2,9 @@
 
 > **The specification, read and signed by a human, should be the business product.**
 
-Spex is a brainstorming experiment about a contradiction in modern spec-driven development: teams ask nondeterministic systems to generate business-critical code, then surround that code with tests, reviews, guardrails, sandboxes, and human oversight until it appears trustworthy.
+Spex is a brainstorming experiment about a contradiction in modern [spec-driven development](./comparison/why-sdd-fails.md): teams ask nondeterministic systems to generate business-critical code, then surround that code with tests, reviews, guardrails, sandboxes, and human oversight until it appears trustworthy.
 
-In that sense, SDD copies the old human workflow, including its weakest part: the lossy, nondeterministic translation from specification to code. Software engineering has always suffered from drift between intent, implementation, tests, and infrastructure. AI does not remove that drift. It accelerates it.
+In that sense, [SDD](./comparison/sdd-rebuttal.md) copies the traditional human software development workflow, including its weakest part: the lossy, nondeterministic translation from specification to code. Software engineering has always suffered from drift between intent, implementation, tests, and infrastructure. AI does not remove that drift. It accelerates it, making the old translation problem faster, larger, and harder to audit.
 
 Spex explores the opposite direction. What if the signed specification were the authoritative business artifact, and generated application code stopped being the thing teams must continuously review for business correctness?
 
@@ -26,11 +26,24 @@ Signed business contract
   → infrastructure architecture determines how business-engine parts are distributed through declared ports
 ```
 
-The key boundary is this: **functional requirements belong in the spec; nonfunctional requirements shape the infrastructure around it.** Many teams call this "business logic vs infrastructure" without noticing that they are really separating business meaning from concerns such as durability, latency, availability, deployment, storage, integration, I/O, and human-computer interaction. The spec may define user intents, permissions, observable business state, allowed state modifications, state responsibilities, outside authorities, value constraints, transactions, and boundary ports. It should not define databases, APIs, primitive machine types, queues, deployment topology, scaling strategy, network protocols, widget state, or how a UI is rendered.
+The key boundary is this: **functional requirements define the specified business logic; nonfunctional requirements shape the infrastructure and interaction mechanisms that support it.** Many teams call this "business logic vs infrastructure" without noticing that they are really separating business meaning from durability, latency, availability, deployment, storage, integration, I/O, and human-computer interaction. Those concerns may derive from the specification, but they must remain separated from the specified logic, both in the design and in the running application.
 
-This is not presented as a wholly new idea. Spex builds on older attempts to separate functional requirements from nonfunctional requirements: business rules, permissions, and state meaning on one side; durability, latency, availability, deployment, storage, and integration concerns on the other. Many software practices talk about "business logic vs infrastructure" without noticing that this is the same boundary. Model-driven development, controlled natural language efforts such as Attempto, formal methods, and architectural traditions such as Clean Architecture all circle that problem from different directions.
+| Specified business logic | Derived nonfunctional implementation |
+|--------------------------|--------------------------------------|
+| User intents and permissions | Databases and APIs |
+| Observable business state and allowed state modifications | Primitive machine types and storage encodings |
+| State responsibilities and outside authorities | Queues, deployment topology, and scaling strategy |
+| Value constraints, transactions, and boundary ports | Network protocols, widget state, and UI rendering |
+
+This is not presented as a wholly new idea. Spex builds on older attempts to separate functional requirements from nonfunctional requirements: business rules, permissions, and state meaning on one side; durability, latency, availability, deployment, storage, and integration concerns on the other. Many software practices talk about "business logic vs infrastructure" without noticing that this is the same boundary. The closest aligning ideas include [model-driven development](./comparison/related-work.md#model-driven-architecture-mda), [controlled natural language](./comparison/related-work.md#controlled-english--natural-language) such as [Attempto Controlled English](https://www.ace-editor.org/) and [Logical English](https://logicalcontracts.com/logical-english/), [formal specification](./comparison/related-work.md#specification-languages--tools), [Rules as Code / computable law](./comparison/related-work.md#rules-as-code--computable-law), and architecture boundaries such as [Clean Architecture](./comparison/related-work.md#robert-c-martin--clean-architecture) and [Hexagonal Architecture](./comparison/related-work.md#alistair-cockburn--hexagonal-architecture). See [Related Work](./comparison/related-work.md) and [Further Reading](./reference/further-reading.md) for the full map.
 
 The open question is whether LLMs can now help with the part that historically failed: making precise specifications writable by humans without letting probabilistic code generation become the source of truth.
+
+## Start Here
+
+- Read the [manifest](./manifest.md) for the current thesis.
+- Read [Logical vs Physical World](./concepts/logical-vs-physical.md) for the functional/nonfunctional boundary.
+- Read [Related Work](./comparison/related-work.md) to see the older attempts Spex builds on and departs from.
 
 ## Knowledge Base Structure
 
