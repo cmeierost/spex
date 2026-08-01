@@ -2,15 +2,17 @@
 
 > **The specification, read and signed by humans, should be the business product.**
 
-SPEX is a proposal for a research project exploring whether business logic can be written in a restricted, computable form of English that is precise enough to analyse and compile deterministically, yet readable enough to discuss and approve directly with domain experts.
+SPEX is a preparation for a proposal for a research project exploring whether business logic can be written in a restricted, computable form of English that is precise enough to analyse and compile deterministically, yet readable enough to discuss and approve directly with domain experts.
+
+## The Problem 
 
 Business specifications often appear clear in ordinary language while remaining too imprecise to determine behaviour unambiguously. When they are translated into software, information is lost, gaps are filled, and assumptions are added.
 
 AI-assisted development does not remove this translation problem. It performs the same translation faster, more frequently, and at a larger scale.
 
-SPEX explores a different approach: make the reviewed specification the single source of truth and compile the specified business behaviour deterministically. AI remains part of the engineering process, but it is not responsible for repeatedly reconstructing business logic from informal documents and existing code.
-
 ## The Core Idea
+
+SPEX explores a different approach: make the reviewed specification the single source of truth and compile the specified business behaviour deterministically. AI remains part of the engineering process, but it is not responsible for repeatedly reconstructing business logic from informal documents and existing code.
 
 During specification, an LLM acts primarily as an interviewer and discussion partner. It helps engineers and domain experts express their knowledge, identify unclear assumptions, and formulate business rules.
 
@@ -59,10 +61,11 @@ SPEX explores the opposite direction:
 A precise specification and deterministic compiler could reduce:
 
 * repeated, token-intensive analysis of specifications and codebases;
-* dependence on increasingly powerful and expensive frontier models;
+* synchronization of code, tests and specification;
 * unnecessary energy and hardware consumption;
 * exposure of sensitive business knowledge to external model providers;
 * the review burden created by untrusted generated business logic.
+* dependence on increasingly powerful and expensive frontier models;
 
 Smaller or locally operated models could still assist with specification and infrastructure work because the compiler provides precise, structured feedback instead of requiring the model to rediscover the entire system repeatedly.
 

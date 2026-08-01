@@ -1,4 +1,4 @@
-# The Spex Manifest
+# The SPEX Manifest
 
 Read the [abstract](./abstract.md) for the concise statement of the Spex direction.
 
