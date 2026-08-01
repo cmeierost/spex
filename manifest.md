@@ -1,8 +1,10 @@
 # The Spex Manifest
 
+Read the [abstract](./abstract.md) for the concise statement of the Spex direction.
+
 ## 1. Executive Summary
 
-This document captures the current working thesis behind Spex. It is not a claim that Spex already exists as a finished language or runtime. It is a research direction shaped by older attempts to separate business logic from infrastructure and to make specifications more exact.
+This document captures the current working thesis behind SPEX. It is not a claim that Spex already exists as a finished language or runtime. It is a research direction shaped by older attempts to separate business logic from infrastructure and to make specifications more exact.
 
 The starting critique is that three existing practices remain structurally unsatisfying:
 
