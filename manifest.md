@@ -1,10 +1,10 @@
 # The SPEX Manifest
 
-Read the [abstract](./abstract.md) for the concise statement of the Spex direction.
+Read the [abstract](./abstract.md) for the concise statement of the SPEX direction.
 
 ## 1. Executive Summary
 
-This document captures the current working thesis behind SPEX. It is not a claim that Spex already exists as a finished language or runtime. It is a research direction shaped by older attempts to separate business logic from infrastructure and to make specifications more exact.
+This document captures the current working thesis behind SPEX. It is not a claim that SPEX already exists as a finished language or runtime. It is a research direction shaped by older attempts to separate business logic from infrastructure and to make specifications more exact.
 
 The starting critique is that three existing practices remain structurally unsatisfying:
 
@@ -53,7 +53,7 @@ High-Precision, Legal English (Controlled English)
 Pure, Typed Lambda Calculus
 ```
 
-**The Interface (Legal English):** Real-world legal contracts are high-precision, declarative rulebooks. A Spex-like specification would likely use a strict, controlled English grammar (conceptually evolving from Attempto Controlled English) that non-programmers (CEOs, business analysts, lawyers) can read, understand, and sign.
+**The Interface (Legal English):** Real-world legal contracts are high-precision, declarative rulebooks. A SPEX-like specification would likely use a strict, controlled English grammar (conceptually evolving from Attempto Controlled English) that non-programmers (CEOs, business analysts, lawyers) can read, understand, and sign.
 
 **The Foundation (Lambda Calculus):** The design goal is for every legal clause in the specification to map 1:1 to expressions in the Lambda Calculus. Because the Lambda Calculus is purely mathematical, stateless, and free of side effects, it offers the kind of deterministic semantics this direction depends on (for example, via Church-Rosser style confluence).
 
@@ -91,12 +91,12 @@ The compiled business engine should also be **distributable**. The compiler may 
 
 | Approach | Why It Fails |
 |----------|-------------|
-| **Kimi AI / Devin / Agent Swarms** | Try to copy the craft of manual programming. Waste immense compute on probabilistic trial-and-error, generating unmaintainable AI legacy code. Spex instead asks whether business logic can move out of probabilistic code generation entirely. |
-| **Model-Driven Architecture (MDA) of the 2000s** | Failed due to visual "spaghetti diagrams" and the roundtrip engineering trap, where generated code had to be manually edited. Spex explores a text-first approach where business meaning remains in the specification and technical implementation stays subordinate. |
-| **Modern Cloud Frameworks** | Force developers to mix infrastructure declarations into code. In Spex, the business specification does not know which physical infrastructure surrounds the portable business engine. |
+| **Kimi AI / Devin / Agent Swarms** | Try to copy the craft of manual programming. Waste immense compute on probabilistic trial-and-error, generating unmaintainable AI legacy code. SPEX instead asks whether business logic can move out of probabilistic code generation entirely. |
+| **Model-Driven Architecture (MDA) of the 2000s** | Failed due to visual "spaghetti diagrams" and the roundtrip engineering trap, where generated code had to be manually edited. SPEX explores a text-first approach where business meaning remains in the specification and technical implementation stays subordinate. |
+| **Modern Cloud Frameworks** | Force developers to mix infrastructure declarations into code. In SPEX, the business specification does not know which physical infrastructure surrounds the portable business engine. |
 
 ---
 
 ## 6. Closing statement
 
-The ambition behind Spex is to push software engineering closer to direct execution of human agreements, without forcing business meaning to survive a long chain of lossy translations into application code. Whether that ambition can be realized remains the open question this repository explores.
+The ambition behind SPEX is to push software engineering closer to direct execution of human agreements, without forcing business meaning to survive a long chain of lossy translations into application code. Whether that ambition can be realized remains the open question this repository explores.

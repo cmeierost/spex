@@ -1,8 +1,8 @@
-# AGENTS.md — Spex Knowledge Base
+# AGENTS.md — SPEX Knowledge Base
 
 ## What This Repo Is
 
-This is a **documentation-only research knowledge base** for the Spex project: a brainstorming experiment about whether signed, compiler-checked specifications can become the authoritative business artifact. No source code lives here — only markdown documentation that captures concepts, architecture sketches, candidate grammar, comparisons, and prior art.
+This is a **documentation-only research knowledge base** for the SPEX project: a brainstorming experiment about whether signed, compiler-checked specifications can become the authoritative business artifact. No source code lives here — only markdown documentation that captures concepts, architecture sketches, candidate grammar, comparisons, and prior art.
 
 ## Folder Structure
 
@@ -20,7 +20,7 @@ This is a **documentation-only research knowledge base** for the Spex project: a
 │   ├── logical-vs-physical.md — Separation of business logic from infrastructure
 │   ├── contract-is-code.md — Single source of truth principle
 │   └── intent-driven-ui.md — Declarative UI from permissions
-├── comparison/            — How Spex differs from existing approaches
+├── comparison/            — How SPEX differs from existing approaches
 │   └── state-of-the-art.md — Kimi/Devin, MDA, Cloud IaC
 ├── grammar/               — Candidate controlled-English grammar
 │   ├── overview.md        — Grammar design goals and characteristics
@@ -53,18 +53,18 @@ This is a **documentation-only research knowledge base** for the Spex project: a
 ### Formatting Rules
 
 - **Headings:** ATX style (`#`, `##`, `###`), sentence case
-- **Code blocks:** Use fenced blocks with language hint (`markdown`, `text`) for Spex spec examples
+- **Code blocks:** Use fenced blocks with language hint (`markdown`, `text`) for SPEX spec examples
 - **Tables:** Prefer tables over bullet lists for comparisons and keyword references
 - **ASCII diagrams:** Use box-drawing characters (`┌─┐│└┘`) for architecture diagrams; keep them narrow (<80 chars)
 - **Cross-references:** Use relative markdown links (`[link](./file.md)`)
 - **Bold** for key terms on first introduction; _italics_ for emphasis in running text
 
-### Spex-Specific Terminology
+### SPEX-Specific Terminology
 
 | Term | Use | Don't Use |
 |------|-----|-----------|
-| Spex | The project name | Holy Grail, the system, this thing |
-| spec | A Spex specification document | source code |
+| SPEX | The project name | Holy Grail, the system, this thing |
+| spec | A SPEX specification document | source code |
 | signed business contract | The human-reviewed spec when legal/business accountability is emphasized | source code |
 | solver | The mathematical verifier that checks completeness and contradictions | implementation engine |
 | compiler | The component that lowers an accepted spec into portable, distributable business-engine parts | LLM, code generator |
@@ -76,9 +76,9 @@ This is a **documentation-only research knowledge base** for the Spex project: a
 | action | A permitted operation (e.g., Cancel, Ship) | method, function, endpoint, API call |
 | state | A declared business condition or responsibility of an entity | table row, cache entry, primitive value |
 
-### Spex Spec Example Style
+### SPEX Spec Example Style
 
-When showing Spex specification text in documentation, use this format:
+When showing SPEX specification text in documentation, use this format:
 
 ````
 ```
@@ -94,7 +94,7 @@ A Customer may Cancel an Order if and only if:
 ```
 ````
 
-- No language hint on the fence (bare ```` ``` ````) to distinguish Spex spec from code
+- No language hint on the fence (bare ```` ``` ````) to distinguish SPEX spec from code
 - Indent list items with 2 spaces
 - Semicolons separate conditions; "and" before the last item
 - Entity names are PascalCase
@@ -108,7 +108,7 @@ Ask: **What question does this document answer?**
 - "How might X work in the proposed design?" → `architecture/`
 - "Why do we believe X?" → `concepts/`
 - "How is X different from Y?" → `comparison/`
-- "How might X be expressed in Spex?" → `grammar/`
+- "How might X be expressed in SPEX?" → `grammar/`
 
 ### Naming Files
 
@@ -123,7 +123,7 @@ Create a new top-level folder only when a topic area has **3+ documents** that d
 - `patterns/` — Common specification patterns and anti-patterns
 - `tutorials/` — Step-by-step walkthroughs of authoring a spec
 - `glossary/` — Term definitions if the vocabulary grows large enough
-- `adr/` — Architecture Decision Records for the Spex project itself
+- `adr/` — Architecture Decision Records for the SPEX project itself
 
 ### Cross-Referencing
 

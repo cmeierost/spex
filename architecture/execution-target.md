@@ -2,7 +2,7 @@
 
 ## Overview
 
-The execution target is a proposed portable and distributable substrate for evaluated Spex specifications. It should be closer in spirit to WebAssembly than to a bespoke application framework: a compiled business engine can run in many physical environments, and can be distributed as communicating parts, while preserving the same business meaning.
+The execution target is a proposed portable and distributable substrate for evaluated SPEX specifications. It should be closer in spirit to WebAssembly than to a bespoke application framework: a compiled business engine can run in many physical environments, and can be distributed as communicating parts, while preserving the same business meaning.
 
 The execution target is not responsible for everything around the business engine. It should not decide databases, networks, deployment topology, queues, caches, or scaling strategy. Those belong to the surrounding infrastructure.
 

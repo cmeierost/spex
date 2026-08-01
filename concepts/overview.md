@@ -1,6 +1,6 @@
 # Concepts Overview
 
-Spex explores a fundamental problem: **software engineering may be built on a broken abstraction.**
+SPEX explores a fundamental problem: **software engineering may be built on a broken abstraction.**
 
 ## The Problem
 
@@ -14,9 +14,9 @@ For decades, building software has required translating human intent through mul
 
 Each layer introduces drift, misinterpretation, and technical debt. The gap between what a human *intends* and what a machine *executes* is where bugs, security vulnerabilities, and project failures live.
 
-## The Spex direction
+## The SPEX direction
 
-The Spex hypothesis is that these layers should collapse toward **one** central artifact: a mathematically precise specification, potentially written in controlled English, that would:
+The SPEX hypothesis is that these layers should collapse toward **one** central artifact: a mathematically precise specification, potentially written in controlled English, that would:
 
 - **A human can read and sign** — no programming knowledge required
 - **A machine can evaluate directly** — no code generation step
@@ -27,6 +27,6 @@ The Spex hypothesis is that these layers should collapse toward **one** central 
 ## Key Questions This Section Answers
 
 - [What are the three core invariants?](./three-invariants.md)
-- [How does Spex separate logic from physics?](./logical-vs-physical.md)
+- [How does SPEX separate logic from physics?](./logical-vs-physical.md)
 - [What does "contract is code" mean?](./contract-is-code.md)
 - [How does intent-driven UI work?](./intent-driven-ui.md)

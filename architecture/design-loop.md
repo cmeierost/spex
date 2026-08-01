@@ -2,14 +2,14 @@
 
 ## Authoring Without Coding
 
-Humans do not type Spex specifications directly. Instead, authoring is a closed-loop cycle between three participants:
+Humans do not type SPEX specifications directly. Instead, authoring is a closed-loop cycle between three participants:
 
 ```
    ┌─────────┐     free language      ┌─────────┐
    │  HUMAN  │ ──────────────────────► │   LLM   │
    │         │                         │         │
    │         │ ◄────────────────────── │         │
-   └─────────┘   formal Spex text      └────┬────┘
+   └─────────┘   formal SPEX text      └────┬────┘
                                             │
                                             │ translate
                                             ▼
@@ -38,7 +38,7 @@ The human describes what they want in everyday, imprecise language:
 
 ### 2. LLM Translates to Formal Spec
 
-The LLM casts this into strict Spex grammar:
+The LLM casts this into strict SPEX grammar:
 
 ```
 A Customer may Cancel an Order if and only if:

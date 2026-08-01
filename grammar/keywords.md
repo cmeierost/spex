@@ -2,7 +2,7 @@
 
 ## Formal Keyword Patterns
 
-These are candidate building blocks for Spex-style specifications. They describe the current direction of the grammar design, not a finished language definition. The aim is for each accepted pattern to map to a precise formal construct.
+These are candidate building blocks for SPEX-style specifications. They describe the current direction of the grammar design, not a finished language definition. The aim is for each accepted pattern to map to a precise formal construct.
 
 The list is intentionally provisional. Some patterns may split, merge, or disappear as the grammar becomes more exact.
 
@@ -191,9 +191,9 @@ Computation would live in the algorithm layer. Algorithms could be written in a 
 
 | Concern | Where It Lives | Example |
 |---------|---------------|---------|
-| Specification logic | Spex grammar | "An order over $1000 gets a 10% discount" |
-| Algorithm binding | Spex grammar | "An Order shall use CalculateDiscount" |
+| Specification logic | SPEX grammar | "An order over $1000 gets a 10% discount" |
+| Algorithm binding | SPEX grammar | "An Order shall use CalculateDiscount" |
 | Algorithm implementation | General-purpose language | The Haskell function that computes the discount |
-| State responsibility | Spex grammar | "The Order History shall be persistent" |
+| State responsibility | SPEX grammar | "The Order History shall be persistent" |
 
 The spec would declare *what* and *which implementation*. The algorithm would implement *how*. The goal is for the grammar to be complete for *what* and *which*.

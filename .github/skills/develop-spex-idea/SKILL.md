@@ -1,9 +1,9 @@
 ---
-name: develop-spex-idea
-description: Expand a Spex concept into a full documentation proposal. Use when the user has a raw idea, wants to flesh out a new topic, or says "develop this idea".
+name: develop-SPEX-idea
+description: Expand a SPEX concept into a full documentation proposal. Use when the user has a raw idea, wants to flesh out a new topic, or says "develop this idea".
 ---
 
-# Develop Spex Idea
+# Develop SPEX Idea
 
 Take a raw idea and expand it into a structured documentation proposal ready for review.
 
@@ -18,7 +18,7 @@ Determine which folder the idea belongs to:
 | How might X work in the proposed design? | `architecture/` |
 | Why do we believe X?                     | `concepts/`     |
 | How is X different from Y?               | `comparison/`   |
-| How might X be expressed in Spex?        | `grammar/`      |
+| How might X be expressed in SPEX?        | `grammar/`      |
 
 If none fit, propose a new folder (only if 3+ docs will go there).
 
@@ -73,4 +73,4 @@ End with: "Ready to write this as `.md` file, or refine the outline further?"
 - Follow AGENTS.md conventions (tone, formatting, terminology)
 - Every core claim should stay aligned with the current working thesis in `manifest.md`
 - Avoid false certainty; use target-model language when implementation is not settled
-- Suggest concrete Spex spec examples where relevant
+- Suggest concrete SPEX spec examples where relevant

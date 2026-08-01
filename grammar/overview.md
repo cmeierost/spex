@@ -2,7 +2,7 @@
 
 ## Controlled English for Specifications
 
-Spex explores the possibility of using a strict subset of English — conceptually evolving from [Attempto Controlled English (ACE)](https://attempto.informatik.uni-hamburg.de/) — that non-programmers could read while remaining precise enough for mathematical evaluation.
+SPEX explores the possibility of using a strict subset of English — conceptually evolving from [Attempto Controlled English (ACE)](https://attempto.informatik.uni-hamburg.de/) — that non-programmers could read while remaining precise enough for mathematical evaluation.
 
 ## Design Goals
 
@@ -47,13 +47,13 @@ Transactions are different. A transaction is a business rule: "these changes hap
 
 | Concern | Where It Lives | Example |
 |---------|---------------|---------|
-| Persistent state | Spex grammar | "The Order History shall be persistent" |
-| Forgettable state | Spex grammar | "The Cart Contents may be forgotten after the Session ends" |
-| Process-scoped state | Spex grammar | "The Import Buffer may be forgotten when the Process ends" |
-| Transaction-scoped state | Spex grammar | "The Reservation Hold may be forgotten when Placing an Order ends" |
-| Outside authority | Spex grammar | "The Payment Provider shall be authoritative for Payment Status" |
-| Transaction rule | Spex grammar | "Placing an Order shall be atomic" |
-| Rollback rule | Spex grammar | "If Placing an Order fails, release the reserved Inventory" |
+| Persistent state | SPEX grammar | "The Order History shall be persistent" |
+| Forgettable state | SPEX grammar | "The Cart Contents may be forgotten after the Session ends" |
+| Process-scoped state | SPEX grammar | "The Import Buffer may be forgotten when the Process ends" |
+| Transaction-scoped state | SPEX grammar | "The Reservation Hold may be forgotten when Placing an Order ends" |
+| Outside authority | SPEX grammar | "The Payment Provider shall be authoritative for Payment Status" |
+| Transaction rule | SPEX grammar | "Placing an Order shall be atomic" |
+| Rollback rule | SPEX grammar | "If Placing an Order fails, release the reserved Inventory" |
 | Persistence mechanism | Infrastructure | How persistent state is physically preserved |
 | Savepoints, isolation | Infrastructure | How rollback is physically executed |
 
@@ -73,8 +73,8 @@ The compiler should select the required value semantics, and infrastructure shou
 
 | Concern | Where It Lives | Example |
 |---------|---------------|---------|
-| Value constraint | Spex grammar | "The Discount Rate shall be between 0 and 1" |
-| Precision rule | Spex grammar | "The Settlement Amount shall use exactly 2 decimal places" |
+| Value constraint | SPEX grammar | "The Discount Rate shall be between 0 and 1" |
+| Precision rule | SPEX grammar | "The Settlement Amount shall use exactly 2 decimal places" |
 | Physical primitive type | Compiler / runtime | `decimal(18,2)` vs scaled integer |
 | Storage encoding | Runtime / infrastructure | SQL decimal, JSON number, binary fixed-point |
 
@@ -88,10 +88,10 @@ The binding is **inverted**: the spec would declare a named contract point, and 
 
 | Concern | Where It Lives | Example |
 |---------|---------------|---------|
-| **Specification logic** | Spex grammar | "An order over $1000 gets a 10% discount" |
-| **Contract point** | Spex grammar | "An Order shall compute its Discount via CalculateDiscount" |
+| **Specification logic** | SPEX grammar | "An order over $1000 gets a 10% discount" |
+| **Contract point** | SPEX grammar | "An Order shall compute its Discount via CalculateDiscount" |
 | **Algorithm implementation** | General-purpose language | Haskell function that declares `Implements: CalculateDiscount` |
-| **State responsibility** | Spex grammar | "The Order History shall be persistent" |
+| **State responsibility** | SPEX grammar | "The Order History shall be persistent" |
 
 The intended grammar would be complete for specification logic and deliberately incomplete for computation.
 

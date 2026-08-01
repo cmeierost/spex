@@ -1,11 +1,11 @@
 ---
-name: grill-spex
-description: Stress-test Spex concepts, architecture, and grammar against internal contradictions, blind spots, and paradigm violations. Use when the user wants to challenge an idea, find gaps in the docs, or says "grill this".
+name: grill-SPEX
+description: Stress-test SPEX concepts, architecture, and grammar against internal contradictions, blind spots, and paradigm violations. Use when the user wants to challenge an idea, find gaps in the docs, or says "grill this".
 ---
 
-# Grill Spex
+# Grill SPEX
 
-Relentlessly challenge Spex documentation against the manifest, the three invariants, and internal consistency.
+Relentlessly challenge SPEX documentation against the manifest, the three invariants, and internal consistency.
 
 ## Rules
 
@@ -16,7 +16,7 @@ Relentlessly challenge Spex documentation against the manifest, the three invari
    - Purely declarative intent governance?
 3. **Check terminology** — does the doc use banned terms from AGENTS.md (e.g., "Holy Grail", "compiler", "backend")?
 4. **Check cross-references** — do links work? Does the doc link back to at least one existing doc?
-5. **Check for hedging** — "might", "could", "perhaps" are forbidden in Spex docs.
+5. **Check for hedging** — "might", "could", "perhaps" are forbidden in SPEX docs.
 
 ## Grill Questions
 

@@ -47,7 +47,7 @@ The core design ambition is a 1:1 isomorphism between controlled English and typ
 
 ### Church-Rosser theorem
 
-The Church-Rosser theorem is relevant because it describes a form of confluence: when reduction reaches a normal form, the order of evaluation does not change the final result. In this research direction, that matters because Spex needs deterministic semantics at the business-logic level.
+The Church-Rosser theorem is relevant because it describes a form of confluence: when reduction reaches a normal form, the order of evaluation does not change the final result. In this research direction, that matters because SPEX needs deterministic semantics at the business-logic level.
 
 The intended consequence is not a magical implementation guarantee. It is a semantic target: the meaning of the specification should not depend on prompt phrasing, runtime mood, or platform-specific interpretation.
 

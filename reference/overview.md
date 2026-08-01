@@ -1,6 +1,6 @@
 # Reference overview
 
-This section is reserved for source documents, prior art, and external material relevant to the Spex research direction.
+This section is reserved for source documents, prior art, and external material relevant to the SPEX research direction.
 
 Start with [Further reading](./further-reading.md) for a curated list of papers, standards, tools, and architecture references.
 

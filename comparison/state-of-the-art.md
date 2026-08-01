@@ -22,7 +22,7 @@ Kimi generates code → code is probabilistic → probabilistic means non-determ
 
 Kimi is a faster hammer on the same broken roof.
 
-### Spex's Answer
+### SPEX's Answer
 
 Reduce generated application code as the central artifact. The long-term aim is a deterministic, human-readable, signable specification, with LLMs assisting authoring rather than deciding business logic.
 
@@ -42,7 +42,7 @@ MDA attempted to separate business logic from implementation using visual modeli
 | **Roundtrip engineering trap** | Generated code had to be manually edited, breaking sync with the model |
 | **Tooling lock-in** | Proprietary model editors, no standard interchange |
 
-### Spex's Answer
+### SPEX's Answer
 
 - **Text-based specs** — version control friendly, diffable, reviewable
 - **No generated code to edit** — the physical layer is completely disposable
@@ -66,17 +66,17 @@ They are useful because infrastructure is real work. The problem is that they en
 | **Vendor lock-in** | Terraform modules are AWS/Azure/GCP specific |
 | **Still requires programming** | Loops, conditionals, and state management in IaC |
 
-### Spex's Answer
+### SPEX's Answer
 
 The business logic does not know computers exist. Infrastructure is a concern around the portable, distributable business engine, not a spec concern.
 
-More precisely: business logic carries functional requirements. Infrastructure code implements nonfunctional requirements such as latency, durability, security, compliance, and scaling. Spex tries to keep those concerns separate even when both must exist.
+More precisely: business logic carries functional requirements. Infrastructure code implements nonfunctional requirements such as latency, durability, security, compliance, and scaling. SPEX tries to keep those concerns separate even when both must exist.
 
 ---
 
 ## Summary Comparison
 
-| Dimension | Traditional Code | AI Code Gen | MDA | Cloud IaC | **Spex** |
+| Dimension | Traditional Code | AI Code Gen | MDA | Cloud IaC | **SPEX** |
 |-----------|-----------------|-------------|-----|-----------|----------|
 | Human-readable spec | ❌ | ❌ | ⚠️ (diagrams) | ⚠️ (HCL/TS) | ✅ |
 | Single artifact | ❌ (5+ layers) | ❌ (code + prompts) | ❌ (model + code) | ❌ (IaC + app) | ✅ |

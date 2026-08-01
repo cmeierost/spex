@@ -2,7 +2,7 @@
 
 ## The Separation
 
-The Spex direction aims to enforce a strict boundary between two realms:
+The SPEX direction aims to enforce a strict boundary between two realms:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -63,7 +63,7 @@ These are implementations of nonfunctional requirements. They exist to satisfy p
 
 ## Infrastructure is outside the spec
 
-The intended Spex grammar should have no keywords for infrastructure. You should not write `CREATE TABLE`, `POST /api/orders`, `spawn thread`, `open socket`, `use Redis`, or `scale to three replicas` in a Spex specification because the language should provide no syntax for those concerns.
+The intended SPEX grammar should have no keywords for infrastructure. You should not write `CREATE TABLE`, `POST /api/orders`, `spawn thread`, `open socket`, `use Redis`, or `scale to three replicas` in a SPEX specification because the language should provide no syntax for those concerns.
 
 There is no I/O in the business specification. There is no persistence mechanism, only requirements about long-lived state. There is no network, only requirements about communication, availability, latency, and trust boundaries. There is no UI rendering model, only requirements about user intent, permitted actions, observable business state, allowed state modifications, and guidance. There is no load balancing or parallel programming, only requirements about throughput, consistency, and performance.
 

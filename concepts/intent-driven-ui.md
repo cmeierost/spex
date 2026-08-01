@@ -2,7 +2,7 @@
 
 ## The Core Idea
 
-Spex does not focus on how a UI should look. The design direction is to describe **what an actor intends to do**, **when that action is allowed**, and **what business state change it means**, so that the UI can become a passive reflection of those capabilities.
+SPEX does not focus on how a UI should look. The design direction is to describe **what an actor intends to do**, **when that action is allowed**, and **what business state change it means**, so that the UI can become a passive reflection of those capabilities.
 
 This is the same functional/nonfunctional boundary in UI form. **User intents, allowed actions, observable business state, and allowed state modifications are functional requirements.** Rendering, layout, device interaction, accessibility implementation, latency, input methods, and other human-computer interaction mechanics are nonfunctional and infrastructural.
 
@@ -30,7 +30,7 @@ if (order.status === 'confirmed') {
 - New states break existing UI code
 - Permissions scattered across components
 
-### Spex (Declarative)
+### SPEX (Declarative)
 
 ```
 An Actor may Ship an Order if and only if:

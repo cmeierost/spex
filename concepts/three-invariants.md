@@ -1,6 +1,6 @@
 # The Three Core Invariants
 
-These are the current design invariants behind Spex. They are not presented as properties of a finished system, but as the constraints the research direction is trying to preserve.
+These are the current design invariants behind SPEX. They are not presented as properties of a finished system, but as the constraints the research direction is trying to preserve.
 
 ---
 
@@ -27,7 +27,7 @@ The physical world is the implementation layer that carries nonfunctional requir
 
 ### Why This Matters
 
-Every time a spec mentions a database, an API endpoint, or a cloud service, it couples business logic to an implementation of nonfunctional requirements. The Spex direction tries to forbid this coupling at the grammar level.
+Every time a spec mentions a database, an API endpoint, or a cloud service, it couples business logic to an implementation of nonfunctional requirements. The SPEX direction tries to forbid this coupling at the grammar level.
 
 ---
 
@@ -37,7 +37,7 @@ Every time a spec mentions a database, an API endpoint, or a cloud service, it c
 
 ### What Gets Eliminated
 
-| Traditional Artifact | Spex Replacement |
+| Traditional Artifact | SPEX Replacement |
 |---------------------|------------------|
 | Requirement documents | The spec itself |
 | Jira tasks / user stories | The spec itself |

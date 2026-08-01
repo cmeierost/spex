@@ -1,12 +1,12 @@
 # Why Spec-Driven Development Fails
 
-## The Google Whitepaper That Proves Spex Right
+## The Google Whitepaper That "Proves SPEX Right"
 
-Google's May 2026 whitepaper *"Spec-Driven Production Grade Development in the Age of Vibe Coding"* by Lee Boonstra is the strongest empirical validation of Spex's thesis — and the clearest demonstration of why the spec-driven code generation paradigm is a dead end.
+Google's May 2026 whitepaper *"[Spec-Driven Production Grade Development in the Age of Vibe Coding | Kaggle](https://www.kaggle.com/whitepaper-spec-driven-production-grade-development-in-the-age-of-vibe-coding)"* by Lee Boonstra is the strongest empirical validation of SPEX's thesis — and the clearest demonstration of why the spec-driven code generation paradigm is a dead end.
 
 This document dissects where it fails and why.
 
-This is the polemical version of the argument. It is intentionally sharper than the rest of the knowledge base.
+This is the polemical version of the argument. Please don't take it as an attack. It is intentionally sharper than the rest of this knowledge base.
 
 ---
 
@@ -32,7 +32,7 @@ As Qwen 3.6 35B put it in one session:
 
 That is the contradiction in one sentence: SDD calls code disposable, then asks humans to treat it like hazardous waste.
 
-Spex's answer: stop making generated application code the reviewed business artifact. The signed spec is the artifact. The portable, distributable business engine is compiled from it. Infrastructure binds to it. The code-generation furnace is no longer the center of the system.
+SPEX's answer: stop making generated application code the reviewed business artifact. The signed spec is the artifact. The portable, distributable business engine is compiled from it. Infrastructure binds to it. The code-generation furnace is no longer the center of the system.
 
 ---
 
@@ -54,7 +54,7 @@ The paper acknowledges this implicitly:
 
 But a Markdown file **is** a vibe. It is not a blueprint. It is unstructured text with no mathematical guarantees.
 
-Spex's answer: controlled English that maps 1:1 to typed lambda calculus. The solver verifies completeness, detects contradictions, and generates counterexamples. The spec is mathematically sound before a human ever signs it.
+SPEX's answer: controlled English that maps 1:1 to typed lambda calculus. The solver verifies completeness, detects contradictions, and generates counterexamples. The spec is mathematically sound before a human ever signs it.
 
 ---
 
@@ -75,7 +75,7 @@ The paper recommends:
 
 This is like optimizing the fuel efficiency of a car with no brakes. The format tax is not the problem — the probabilistic model is.
 
-Spex's answer: stop burning tokens to manufacture core business logic you already intend to distrust. LLM effort belongs in the authoring loop, where it helps clarify and refine the spec. The accepted specification should be checked by a deterministic solver, not interpreted probabilistically by an LLM.
+SPEX's answer: stop burning tokens to manufacture core business logic you already intend to distrust. LLM effort belongs in the authoring loop, where it helps clarify and refine the spec. The accepted specification should be checked by a deterministic solver, not interpreted probabilistically by an LLM.
 
 ---
 
@@ -89,7 +89,7 @@ The paper cites a 2026 study (Ouyang et al., SkCC):
 
 This is not a feature of LLMs — it is a fatal flaw. A system whose correctness depends on YAML indentation depth is not production-grade. It is a house of cards.
 
-Spex's answer: the grammar is the format. Controlled English has one interpretation. No format tax, no parsing sensitivity, no 40% variance.
+SPEX's answer: the grammar is the format. Controlled English has one interpretation. No format tax, no parsing sensitivity, no 40% variance.
 
 ---
 
@@ -110,7 +110,7 @@ The paper acknowledges the problem:
 
 Fragmentation is not solved by splitting the spec into four places. It is solved by having one spec.
 
-Spex's answer: one manifest, one grammar, one solver. The spec is a single document. No fragmentation, no context budget, no latency from stitching together four instruction sources.
+SPEX's answer: one manifest, one grammar, one solver. The spec is a single document. No fragmentation, no context budget, no latency from stitching together four instruction sources.
 
 ---
 
@@ -131,7 +131,7 @@ The paper's solution: more layers.
 
 This is not a solution. It is a confession that the foundation is broken.
 
-Spex's answer: deterministic evaluation. Lambda calculus does not hallucinate. It reduces to a normal form or it does not. Boolean result: true or false. No guessing, no probability, no "vibe-consistent" lies.
+SPEX's answer: deterministic evaluation. Lambda calculus does not hallucinate. It reduces to a normal form or it does not. Boolean result: true or false. No guessing, no probability, no "vibe-consistent" lies.
 
 ---
 
@@ -143,7 +143,7 @@ The paper admits:
 
 This is the **Illusion of Speed**. AI writes code 100x faster than humans, but if 80% of it is hallucinated, the review burden is 100x worse. The bottleneck shifts from writing to reviewing — and reviewing is harder than writing because you have to understand code you didn't write, in a system you didn't design.
 
-Spex's answer: generated application code is not the reviewed business artifact. The spec is written by humans, verified by the solver, and lowered into portable, distributable business-engine parts. The primary review is reading the signed business contract, not spelunking through probabilistic code someone already plans to throw away.
+SPEX's answer: generated application code is not the reviewed business artifact. The spec is written by humans, verified by the solver, and lowered into portable, distributable business-engine parts. The primary review is reading the signed business contract, not spelunking through probabilistic code someone already plans to throw away.
 
 ---
 
@@ -163,7 +163,7 @@ Every iteration burns tokens. Every regeneration burns tokens. Every test suite 
 
 The paper optimizes this loop (leaner specs, better formatting, MCP tools) but never questions the loop itself.
 
-Spex's answer: end the regeneration loop.
+SPEX's answer: end the regeneration loop.
 
 ```
 Spec (Controlled English) → Solver verifies → Human signs
@@ -190,11 +190,11 @@ No code-regeneration loop. No token furnace for core business logic. No human co
 
 ---
 
-## The Spex Alternative
+## The SPEX Alternative
 
-Spex does not optimize the spec-driven code generation loop. Spex eliminates it.
+SPEX does not optimize the spec-driven code generation loop. SPEX eliminates it.
 
-| Spec-Driven Development | Spex |
+| Spec-Driven Development | SPEX |
 |------------------------|------|
 | Spec → LLM → Code → Tests → Review → Deploy | Spec → Solver → Sign → Portable, distributable business engine |
 | Probabilistic, hallucinates | Deterministic, Church-Rosser |
@@ -207,10 +207,10 @@ Spex does not optimize the spec-driven code generation loop. Spex eliminates it.
 
 The Google whitepaper proves that the industry has reached the limit of spec-driven code generation. The authors know it is broken — they just haven't gone far enough to eliminate the code.
 
-Spex does.
+SPEX does.
 
 ---
 
 ## See Also
 
-For a detailed dialectic pairing SDD defenses with Spex responses, see [Rebuttal: How SDD Defends Itself](./sdd-rebuttal.md).
+For a detailed dialectic pairing SDD defenses with SPEX responses, see [Rebuttal: How SDD Defends Itself](./sdd-rebuttal.md).

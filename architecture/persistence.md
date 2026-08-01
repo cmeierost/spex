@@ -2,7 +2,7 @@
 
 ## Writing Is Infrastructure
 
-In Spex, the mechanism of data persistence is invisible to the specification. The spec declares what entities exist, what rules govern them, and what responsibility the system has for their state. The surrounding infrastructure decides how to store, recover, observe, or recompute that state for the portable, distributable business engine.
+In SPEX, the mechanism of data persistence is invisible to the specification. The spec declares what entities exist, what rules govern them, and what responsibility the system has for their state. The surrounding infrastructure decides how to store, recover, observe, or recompute that state for the portable, distributable business engine.
 
 That storage choice is an implementation of nonfunctional requirements, not business meaning. A database engine, indexing strategy, replication mode, or caching layer exists to satisfy concerns such as performance, durability, availability, and cost.
 

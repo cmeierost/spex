@@ -2,7 +2,7 @@
 
 This section is reserved for future example specifications, thought experiments, and evaluation sketches.
 
-The purpose of these examples is to make the Spex research direction concrete without pretending that a finished language or runtime already exists.
+The purpose of these examples is to make the SPEX research direction concrete without pretending that a finished language or runtime already exists.
 
 Planned content includes:
 
