@@ -24,13 +24,13 @@ If code is truly disposable, why does the paper dedicate sections to:
 - **AI-Generated Test Coverage** — because the code can't be trusted
 - **Sandboxing** — "prevent unauthorized actions and protect privacy"
 
-**Six layers of safety net for "disposable" code.** That is not disposable. That is code so untrustworthy it needs a fortress around it.
+**Five layers of safety net for "disposable" code.** That is not disposable. That is code so untrustworthy it needs a fortress around it.
 
 As Qwen 3.6 35B put it in one session:
 
 > "Why would you sandbox, test, and review something you are going to flush down the toilet? What about the human in that loop? Would you want to be that human?"
 
-That is the contradiction in one sentence: SDD calls code disposable, then asks humans to treat it like hazardous waste.
+That is the contradiction in one sentence: SDD calls code disposable,  treats it like hazardous waste and still asks humans to put their nose into it.
 
 SPEX's answer: stop making generated application code the reviewed business artifact. The signed spec is the artifact. The portable, distributable business engine is compiled from it. Infrastructure binds to it. The code-generation furnace is no longer the center of the system.
 
@@ -73,7 +73,7 @@ The paper recommends:
 - Flat YAML blocks to reduce nesting depth
 - "Lean, compiled instruction sets" to save tokens
 
-This is like optimizing the fuel efficiency of a car with no brakes. The format tax is not the problem — the probabilistic model is.
+This is rearranging deck chairs on the Titanic. The format tax is not the problem — the probabilistic model is.
 
 SPEX's answer: stop burning tokens to manufacture core business logic you already intend to distrust. LLM effort belongs in the authoring loop, where it helps clarify and refine the spec. The accepted specification should be checked by a deterministic solver, not interpreted probabilistically by an LLM.
 
@@ -205,9 +205,11 @@ SPEX does not optimize the spec-driven code generation loop. SPEX eliminates it.
 | Human reviews AI-generated code | Human reads and signs the business contract |
 | Closed loop of regeneration | Solver-guided spec, compiled business engine |
 
-The Google whitepaper proves that the industry has reached the limit of spec-driven code generation. The authors know it is broken — they just haven't gone far enough to eliminate the code.
+This whitepaper proves that the industry has reached the limit of spec-driven code generation. The authors know it is broken — they just haven't gone far enough to eliminate the code. 
 
 SPEX does.
+
+> If a system translates a human-written specification into code without guessing, it is a compiler by definition, not an LLM. Do not expect deterministic results from a probabilistic system.
 
 ---
 
