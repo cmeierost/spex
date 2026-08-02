@@ -2,7 +2,7 @@
 
 This document pairs strong defenses of Spec-Driven Development with SPEX responses.
 
-It originated as an exploratory dialogue with Qwen 3.6 35B and has been edited into a research note.
+It originated as an exploratory dialogue with Qwen 3.6 35B challenging the LLM to criticize the idea of SPEX from the view of SDD and was improved with GPT 5.6 Sol. It has been edited into a research note.
 
 ---
 
@@ -80,9 +80,9 @@ In SDD, important behavior may be distributed across chat history, agent instruc
 
 SPEX separates concerns differently. Business logic, algorithms, UI state, rendering, and infrastructure may live in separate files, but the goal is for them to relate through one authoritative formal model. The specification system would define the dependency boundaries and the meaning of each file.
 
-Physical concerns such as programming language versions, framework choices, database products, and deployment mechanisms belong to infrastructure around the portable, distributable business engine. They are not part of the business contract.
+Physical concerns such as programming language versions, framework choices, database products, and deployment mechanisms belong to infrastructure around the portable, distributable business engine. They are not part of the business contract. They are quantified, measurable goals. And there we can let AI find a way to fulfill them.
 
-The goal is not one giant document. The goal is one authoritative formal model.
+The goal is not one giant document. The goal is one authoritative formal model that is proven to not be broken.
 
 ---
 
@@ -94,19 +94,20 @@ Hallucination is a known property of LLMs. SDD does not deny it. It contains the
 
 **SPEX Response:**
 
+Guessing is intrinsic to how LLMs work; hallucination is what that guessing looks like when it is wrong. It is not a defect that guardrails can eliminate.
+
 Containment is not the same as correctness.
 
 The central weakness of AI-generated code is that the model is allowed to guess. A hallucination does not merely produce a wrong sentence. It can produce a coherent implementation that looks plausible, passes shallow tests, and still violates the intended business rule.
 
-SDD adds safety layers around a probabilistic foundation. SPEX tries to remove probabilistic implementation from the correctness path. The LLM may propose specification text, but it should not decide what the text means. The compiler should.
+SDD adds safety layers around a probabilistic foundation. SPEX aims to remove probabilistic implementation from the correctness path. The LLM may propose specification text to help the human develop the specification faster, but it must not decide what that text means. The compiler must.
 
 A SPEX clause should be accepted only if it maps to the formal model. Preconditions, transformations, transactions, workflow rules, and results should be checked deterministically. If the model is incomplete or contradictory, the solver should produce a counterexample. The LLM can explain that counterexample to the human, but it should not overrule it.
 
 This is the core distinction:
 
-- **SDD asks the model to implement.**
-- **SPEX asks the model to help author.**
-- **The compiler decides.**
+- **SDD asks the model to implement an unfinished specification.**
+- **SPEX asks the model to help author and correct the specification; the compiler then deterministically produces the business core. AI may implement the infrastructure where we know what outcome we need, but do not need to prescribe how it is achieved.**
 
 ---
 
@@ -118,19 +119,19 @@ An LLM is a compiler in the structural sense: it translates a source you own (th
 
 **SPEX Response:**
 
-People who claim an LLM is a compiler have never tried to design a programming language with an unfinished spec.
+We already stated:
 
-Birgitta Böckeler makes the same distinction in [I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html): LLMs are inferential systems, not compilers, interpreters, transpilers, or assemblers of natural language. A compiler works from structured input to repeatable, predictable output. An LLM does not.
+> If a system translates a human-written specification into code without guessing, it is a compiler by definition, not an LLM. Do not expect deterministic results from a probabilistic system. A compiler requires a restricted, clearly defined language.
 
-Designing a programming language revealed the hard truth: when the spec is incomplete, changing it breaks the implementation. The LLM cannot reliably update only the affected parts. It produces uncontrolled transformations that require starting from scratch.
+Setting up guardrails to make "compiling" deterministic is absurd.
 
-That is not a compiler. That is an uncontrolled code transformer.
+Birgitta Böckeler makes the same distinction in [I still care about the code](https://martinfowler.com/articles/exploring-gen-ai/i-still-care-about-the-code.html) on Martin Fowlers Website: LLMs are inferential systems, not compilers, interpreters, transpilers, or assemblers of natural language. A compiler works from structured input to repeatable, predictable output. An LLM does not. 
 
 A real compiler has a pipeline: lexer, parser, type checker, optimizer, code generator. Each stage is deterministic. Each stage can be debugged. Each stage preserves the meaning of the input. The compiler community spent decades solving this problem.
 
 The LLM-as-compiler people are proposing something worse than what already exists, and calling it equivalent.
 
-SPEX should not use the LLM as a compiler. It should use the LLM as a translator — from free language to controlled English. The actual compilation would be done by the solver, which must be deterministic, debuggable, and mathematically verifiable.
+SPEX does not use the LLM as a compiler. It uses the LLM as a translator — from free language to restricted controlled English. The actual compilation is done by the solver, which must be deterministic, debuggable, and mathematically verifiable.
 
 ---
 
@@ -138,7 +139,7 @@ SPEX should not use the LLM as a compiler. It should use the LLM as a translator
 
 The review bottleneck exists because SDD continues to produce application code as the central artifact. If AI writes code faster than humans can understand it, delivery speed becomes an illusion. The organization has not removed work. It has moved work from writing to reviewing, debugging, and trusting.
 
-SPEX targets that specific bottleneck. In the intended model, there is no generated application source code to review after every change. The human reviews the specification. The solver verifies the formal model. The compiler produces portable execution parts that bind to infrastructure through declared boundary ports.
+SPEX targets that specific bottleneck. In the intended model, there is no generated application source code to review after every change. The human reviews the specification. The solver verifies the formal model. The compiler produces portable execution parts that bind to infrastructure through declared boundary ports. Examples make the intended business outcome concrete and help demonstrate that the logic satisfies it or may help to find contradictions in the specification.
 
 This does not remove all review. It moves review to the correct level: business meaning, not generated implementation detail.
 
@@ -164,6 +165,40 @@ The barrier was never only verification. The barrier was specification authoring
 
 ---
 
+## 9. "Business Logic Is Only a Small Part of the System."
+
+**SDD Defense:**
+
+Business logic is often only a small part of a real application. Most effort goes into databases, user interfaces, integrations, authentication, deployment, observability, performance, and infrastructure. SPEX does not make those concerns disappear, so it does not solve most of the work involved in building software.
+
+**SPEX Response:**
+
+Correct. SPEX does not claim to eliminate infrastructure work. It identifies a boundary between two different kinds of requirement.
+
+Functional requirements define the business behavior that must be true: entities, actions, permissions, state transitions, and outcomes. They must be clear enough to verify, because they define the signed business contract. SPEX would make this contract authoritative and deterministically executable.
+
+Non-functional requirements define measurable operational goals: latency, availability, throughput, cost, security policy, supported technologies, and deployment constraints. They matter, but they do not define whether an Order may be cancelled, an Invoice may be paid, or a Shipment may be released.
+
+Those operational concerns may account for most implementation effort. They are still not a reason to make the business contract probabilistic. SPEX keeps the contract small precisely because it is the part that must remain stable, legible, and correct while the surrounding technology changes.
+
+## 10. "Clean Architecture Already Separates Business Logic."
+
+**SDD Defense**:
+
+Separating infrastructure code from business logic is not new. Clean Architecture, Hexagonal Architecture, and similar approaches have pursued that separation for years. We can specify the architecture and let an LLM implement it. They are quite good in it.
+
+**SPEX Response:**
+
+Exactly. SPEX applies the same principle before application code even exists.
+
+Clean and Hexagonal Architecture ask teams to preserve a separation in code. SPEX would represent business behavior in the verified specification and expose infrastructure only through declared boundary ports. The compiler produces portable, distributable business-engine parts; adapters bind them to databases, interfaces, deployment platforms, and outside authorities.
+
+This makes the separation a property of the specification and compilation process rather than a convention maintained by every implementation. Database queries, framework calls, and cloud configuration cannot silently become business rules because they are outside the language that expresses the business contract.
+
+An LLM can implement and optimize adapters against declared ports, permitted technologies, and measurable non-functional goals. It does not define or alter business meaning outside the specification-authoring process. The accepted specification and deterministic compiler remain authoritative.
+
+----
+
 ## Summary
 
 SDD is a necessary transition away from vibe coding, but it remains trapped in the code-generation paradigm. It improves the way teams instruct AI to produce code, but it does not eliminate the liability of generated code.
@@ -175,7 +210,17 @@ SPEX changes the target artifact.
 | **Role of spec** | Guides code | Becomes the authoritative business contract |
 | **Role of AI** | Generates implementation | Helps author formal intent |
 | **Correctness** | Contained by review, tests, guardrails | Targeted through deterministic compilation, verification, and portable, distributable business-engine execution |
+| **Source of authority** | Distributed across specs, prompts, code, tests, and agent instructions | Accepted specification and formal model |
+| **Implementation** | Probabilistic code generation from an incomplete specification | Deterministic compilation of an accepted specification |
+| **Review focus** | AI-generated code, tests, and diffs | Business meaning expressed in the signed specification |
+| **Change cycle** | Generate, review, correct, and regenerate | Refine the specification, verify it, then compile |
+| **Business and infrastructure** | Separation depends on architecture and implementation discipline | Business core and boundary ports are distinct in the specification model |
+| **Infrastructure work** | AI generates application and infrastructure code together | AI may implement adapters against declared ports and measurable goals |
+| **Failure of the spec** | The model guesses at omissions or conflicts | The solver should reject incomplete or contradictory formal meaning |
 
-SDD is better prompting for software production.
+### The Real Difference
 
-SPEX asks whether software should be defined around the signed specification rather than generated application code.
+- SDD is better prompting for software production. It attempts to make a probabilistic system reliable through increasingly elaborate instructions, guardrails, tests, and review. It accelerates the existing development loop without removing its central problem: because the specification remains ambiguous and LLMs must guess, generated code still has to be understood, reviewed, checked, tested, corrected, and trusted at a volume humans cannot handle at the speed AI can generate it.
+Where the specification does not need to be authoritative, Vibe Coding may reach a result faster. SDD is an attempt to repair Vibe Coding without abandoning its probabilistic foundation.
+
+- SPEX asks whether software should instead be defined around the signed specification. The business contract is verified and compiled deterministically; AI assists in authoring the contract but is guarded and driven by the compiler. SPEX separates the parts for which **how** is not important from the business contract. It can leave implementation of infrastructure concerns to artificial intelligence without allowing it to change or break the specification.
