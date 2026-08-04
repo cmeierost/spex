@@ -12,3 +12,6 @@ Planned content includes:
 - examples that separate functional requirements from nonfunctional requirements
 
 For the current research framing, start with the [README](../README.md) and the [manifest](../manifest.md).
+
+The first Example that is already proven to be compilable by our compiler POC can be viewed in [withdrawal.spex.md](./withdrawal.spex.md).
+Of course it is a very simple example. But we implemented this in only 1 day of work including the language design and the compiler.
