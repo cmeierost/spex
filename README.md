@@ -1,5 +1,9 @@
 # SPEX — Executable Specifications
 
+For a concise introduction of what SPEX is supposed to become, see
+[What Is SPEX Supposed to Become?](./description-en.md) or
+[Was soll SPEX werden?](./description-de.md).
+
 ## The Problem of Specifying Software Behaviour
 
 Some software has no formal specification at all; its “specification” is scattered across emails, handwritten meeting notes, and informal conversations. Even higher-quality business specifications may appear clear in ordinary language while remaining too imprecise to determine behaviour unambiguously. When they are translated into software, information is lost, gaps are filled, and assumptions are added. The resulting code is normally inaccessible to people without a programming background, while domain experts cannot be sure that the software actually does what they intended. This is not a new problem: the software industry has struggled with it since the earliest computers.
