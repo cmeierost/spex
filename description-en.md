@@ -1,12 +1,14 @@
-# What Is SPEX Supposed to Become?
+# What is SPEX supposed to become?
 
-SPEX is an executable specification language for business and UI logic.
+SPEX is intended to become an executable specification language for business and behavioural UI logic.
 
-The specification is the **Single Source of Truth**: it describes the intended behaviour precisely enough for a compiler to deterministically generate executable logic from it. At the same time, the syntax remains valid English so that business experts can read and review it without needing programming-language knowledge.
+Its central idea is that a specification, once read and approved by the responsible people, becomes the **authoritative source of business behaviour**. It should describe that behaviour precisely enough for a compiler to translate it deterministically into the production business core. At the same time, its controlled syntax should remain close enough to English that domain experts can discuss and review it without learning a conventional programming language.
 
-## The Basic Idea
+SPEX is therefore not ordinary natural language and not merely a better prompt. It is a restricted language in which every valid construct must have defined semantics.
 
-In traditional software development, a specification is interpreted by people and translated into code. Agentic Spec-Driven Development with AI largely automates the same process:
+## The basic idea
+
+In traditional software development, people interpret a specification and translate it into code. Current AI-oriented Spec-Driven Development largely accelerates the same sequence:
 
 ```text
 Specification
@@ -20,56 +22,80 @@ Code
 Tests / Reviews
 ```
 
-AI can accelerate this traditional development process dramatically. But the fundamental risk remains: at every translation step, information can be lost, assumptions can be added, or requirements can be interpreted differently from what was originally intended.
+At every step, information can be lost, assumptions can be introduced, or requirements can acquire a meaning that nobody explicitly approved. Tests, reviews, and guardrails can detect some incorrect outcomes, but they create further representations that must also be shown to preserve the specification's meaning.
 
-Agentic SDD therefore does not eliminate this problem. It makes the translation faster — and misunderstandings and errors can propagate faster into code, tests, and other artefacts as well.
+That leaves two questions:
 
-SPEX starts earlier:
+> What exactly should the software do?
+
+and
+
+> How do we know that the software actually does exactly that?
+
+The underlying problem depends on how important and complete the specification is:
+
+- **We do not care about the behaviour.** A team can deliberately leave it open to a human or AI implementer.
+- **The specification is incomplete.** Whoever implements the missing behaviour has to guess; software cannot be shown to match an intended behaviour that was never defined.
+- **The specification is precise.** There should be nothing left to interpret, so interpreting it probabilistically again introduces avoidable semantic risk.
+
+You cannot expect even the smartest AI to implement exactly what you intended if you never expressed exactly what you intended.
+
+SPEX focuses on the third case while helping humans expose and resolve the second:
 
 ```text
-Natural Language
-      ↓
-LLM assists
-      ↓
+Human Intent
+     ↓
+LLM and Formal-Tool Assistance
+     ↓
 Precise SPEX Specification
-      ↓
-Compiler
-      ↓
-Executable Behaviour
+     ↓
+Human Approval
+     ↓
+Deterministic Compiler
+     ↓
+Production Business Core
 ```
 
-The LLM helps transform an initially incomplete or vague description into precise SPEX syntax. The compiler then checks the specification for missing cases, contradictions, type errors, and other forms of incompleteness.
+An LLM may interview domain experts, identify uncertainty, and propose SPEX formulations. The compiler and formal-analysis tools check what can be established from the language semantics, such as syntax, types, references, structural completeness, contradictions, unreachable cases, or counterexamples.
 
-After that, the functional behaviour is **no longer interpreted**. It is compiled deterministically.
+These tools cannot decide what the business intended. The LLM may propose the specification, but it does not decide the required behaviour or define the language semantics. The responsible human reviews the precise result and decides whether it expresses the intended meaning. Once accepted, that meaning is **no longer inferred** by AI; it is preserved through deterministic compilation.
 
-## Precise, but Still Readable
+## Precise, but still readable
 
-SPEX is formal, but it is designed to remain readable as correct English:
+SPEX is formal, but its constructs are designed to read like controlled English:
 
-```text
+```
 An Account has a Balance of Dollars.
 
-When a Withdrawal Request occurs:
-
-- Provided that its Requested Amount does not exceed
-  its Customer's Account's Balance:
-
-- The resulting Outcome is successful.
-
-- Otherwise:
-
-- The resulting Outcome is declined.
+When a Withdrawal Request occurs, the result is a Withdrawal:
+  - provided that its Requested Amount does not exceed
+    its Customer's Account's Balance:
+    - the resulting Outcome is successful; and
+    - the resulting Balance is its Customer's Account's Balance
+      minus its Requested Amount;
+  - otherwise:
+    - the resulting Outcome is declined; and
+    - the resulting Balance is its Customer's Account's Balance.
 ```
 
-The same specification can therefore be read both by the compiler and by a business expert.
+Precision here does not mean merely well-written English. A specification needs definitions, not impressions. Constructs such as types, relationships, conditions, alternatives, and state transitions must have a meaning defined by the language rather than inferred from context. Once a language has formally defined semantics, a compiler, not an LLM, can preserve them during translation.
 
-The purpose of precision is not to make communication harder, but to improve it: unclear rules, missing cases, and different interpretations become visible before they disappear into the implementation.
+The aim is to make unclear rules, missing cases, and competing interpretations visible before they disappear into an implementation.
 
-## Examples Validate the Specification
+## Human approval and traceability
 
-Concrete examples complement the rules and can be discussed directly with business experts.
+Anything proposed by an LLM or developer remains a proposal until a responsible human accepts it. Parts of a specification may therefore have explicit states such as proposed, developer-reviewed, or domain-approved.
 
-Their central question is not:
+If approved behaviour changes, its approval is invalidated and the changed statement must be reviewed again. This keeps authority and traceability attached to the behaviour itself rather than to comments, meeting notes, or tests around it.
+
+Formal validity and business approval answer different questions:
+
+- The compiler establishes whether a statement is valid within the defined SPEX semantics.
+- A human establishes whether that valid statement expresses the intended business meaning.
+
+## Examples validate the specification
+
+Concrete, typed examples complement the rules and can be discussed directly with domain experts. Their central question is not:
 
 > Did the developer implement the specification correctly?
 
@@ -77,62 +103,87 @@ but:
 
 > Did we specify the intended behaviour correctly?
 
-Examples therefore help uncover misunderstandings in the specification itself.
+Examples are evaluated using the same SPEX semantics as the rules. They must not silently complete missing behaviour or become a second, hidden specification. The same approved examples can later run against the integrated application to check whether persistence, communication, rendering, and other infrastructure preserve the specified behaviour.
 
-## Business and UI Logic
+Tests still matter, but they no longer need to compensate for a probabilistic translation of already-defined business behaviour. Otherwise, the original trust problem merely moves to another question: who verifies that the tests themselves express what the specification says?
 
-SPEX describes both traditional business logic and UI logic, for example:
+## Business and behavioural UI logic
 
-- states
-- user actions
-- validations
-- state transitions
-- business dependencies
+SPEX is intended to describe behaviour whose outcome can be judged correct or incorrect, including:
 
-The concrete presentation is deliberately excluded.
+- typed domain concepts and values;
+- business decisions and validations;
+- permissions and user intents;
+- events, state, and state transitions;
+- observable UI state and permitted interactions; and
+- external authorities and declared boundary ports.
 
-SPEX can define **when an action is allowed**, but not how a button looks or which UI framework is used.
+The concrete presentation is deliberately excluded. SPEX may define **when an action is allowed** and how application state changes in response, but not how a button looks or which UI framework renders it.
 
-## Functional Behaviour Is Compiled, Infrastructure Remains Flexible
+## Functional behaviour is compiled, infrastructure remains flexible
 
-SPEX focuses on behaviour that can be defined as objectively correct or incorrect.
+SPEX defines what the system must guarantee without prescribing every technical mechanism used to provide that guarantee.
 
-Non-functional requirements such as performance, scalability, or availability are instead treated as measurable targets.
+For example, SPEX may state that an accepted withdrawal reduces an account balance. That state transition belongs to the specified behaviour. Whether the new balance is stored in PostgreSQL, an event store, or a remote banking system remains an infrastructure decision. If the balance must survive a restart, durability must be declared as a measurable requirement and fulfilled by the infrastructure.
 
-This creates a clear separation:
+The same distinction applies elsewhere. A rule that only a certain role may approve a payment is business behaviour; the identity provider, signed claims, or access-control mechanism used to enforce it is technical realisation.
 
-**Functional requirements are specified and compiled.**
+This creates a deliberate boundary:
 
-**Non-functional requirements are measured and fulfilled by the technical implementation.**
+> *what behaviour the system must guarantee*
 
-The infrastructure around the business kernel can therefore still be developed and optimised conventionally or with AI assistance.
+and
 
-## Changes Start in SPEX
+> *how that behaviour is implemented.*
 
-When a business rule changes, the specification is changed and compiled again:
+Required behaviour is specified semantically and compiled. Open implementation choices remain available to engineers and AI, constrained by declared interfaces and measurable requirements.
+
+Those requirements may cover performance, availability, durability, technical security properties, deployment, and cost. AI can remain highly useful around this boundary: before approval, where interpretation helps formulate the specification, and outside the compiled core, where it can find good ways to implement guarantees that have already been defined.
+
+## Changes start in SPEX
+
+When approved business behaviour changes, its SPEX source changes, its approval is renewed, and it is compiled again:
 
 ```text
 Business Change
       ↓
 SPEX Change
       ↓
+Renewed Approval
+      ↓
 Compiler
       ↓
-Updated Behaviour
+Updated Business Core
 ```
 
-There is no separate business implementation that has to be kept in sync with the specification afterwards.
+There is no separately maintained business implementation to synchronise with the specification. For behaviour covered by SPEX, the accepted specification is intended to be the source language of the production business core — not a model against which another implementation is independently written.
 
-The specification remains the authoritative description of the behaviour that is actually executed.
+This does not remove every verification problem. The compiler and runtime must themselves be trusted to preserve the semantics defined by SPEX, and the complete application still requires integration and technical validation. The aim is to replace repeated, application-specific probabilistic interpretation with a reusable language and toolchain trust boundary.
 
-## The Difference in One Sentence
+## Current status
 
-**Agentic SDD with AI accelerates the traditional translation from specification to software. SPEX eliminates that translation for functional behaviour.**
+SPEX is a research direction supported by an exploratory compiler prototype, not a finished language or production toolchain. The prototype implements part of the proposed type system and compiles a limited set of specifications into TypeScript intended to serve as the application's business core.
 
-The philosophy behind it is:
+There is not yet a stable grammar, complete formal semantics, general solver, conformance suite, or finished execution target. The challenge is not inventing executable specifications; they have existed for decades. It is making them practical enough for everyday software development: precise enough to compile, natural enough to read, and easy enough to write with AI assistance.
 
-> **Interpretation where freedom is useful. Determinism where correctness is required.**
+The central research questions are whether realistic business behaviour can be expressed without hidden implementation assumptions, whether domain experts can efficiently review it, and whether the approach reduces ambiguity, development effort, and LLM inference in practice.
 
-The specification therefore does not merely describe what the software should do.
+## The difference in one sentence
 
-**It is the executable definition of what the software does.**
+**Current AI-oriented SDD accelerates the traditional interpretation of specifications into software. SPEX investigates whether that interpretation can end once functional behaviour has been precisely defined and approved.**
+
+The principle is simple:
+
+> **Let AI interpret what is still open.**
+>
+> **Compile what has already been decided.**
+
+The specification would not merely describe what the software should do.
+
+**It would be the executable, human-approved definition of what the software does.**
+
+## Further reading
+
+- [Spec-Driven Development Gets Your Spec Wrong — Part 1](./articles/spec-driven-development-gets-your-spec-wrong.md)
+- [SPEX: Executable Specifications for AI-Assisted Development](./articles/spex-executable-specifications-for-ai-assisted-development.md)
+- [The SPEX Manifest](./manifest.md)
